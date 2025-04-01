@@ -1,0 +1,5 @@
+py -m venv env
+
+python.exe -m pip install --upgrade pip
+
+manage.py----command entry point    
