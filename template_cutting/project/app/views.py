@@ -21,3 +21,11 @@ def registration(request):
 
 def login(request):
     return render(request,'login.html')
+
+def register(request):
+    print("register page")
+    print(request.method)
+    print(request.POST)
+    print(request.FILES)
+    print(request.COOKIES)
+    print(request.META)
