@@ -1,3 +1,13 @@
 .reg{
-    color: aqua;
+    color: rgb(255, 111, 0);
+}
+.reglab
+{
+    color: red;
+}
+.reglab ::placeholder{
+    text-transform: uppercase;
+}
+.reg img{
+    width: 40%;
 }
