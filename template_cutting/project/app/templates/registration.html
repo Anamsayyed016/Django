@@ -7,7 +7,7 @@
 
 {% block content %} 
     <h1 class="reg">Registration Form</h1>
-    {% comment %} <!-- <img src="{% static 'image/nature.jpg' %}" alt=""> --> {% endcomment %}
+     <img src="{% static 'image/nature.jpg' %}" alt=""> 
     <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
