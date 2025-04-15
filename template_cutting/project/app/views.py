@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from.models import Student
 
 # Create your views here.
 def home(request):
@@ -38,6 +39,17 @@ def register(request):
     gender=request.POST.get('gender')
     password=request.POST.get('password')
     cpassword=request.POST.get('cpassword')
-    profile_pic=request.FILE.get('profile-pic')
-    resume=request.FILE.get('resume')
+    profile_pic=request.FILES.get('profile-pic')
+    resume=request.FILES.get('resume')
     print(username,email,detail,phone,dob,subscribe,gender,password,cpassword,resume,profile_pic)
+
+    Student.objects.create(Stu_name=username,
+                          Stu_email=email,
+                          Stu_contact=phone,
+                          Stu_dis=subscribe,
+                          Stu_dob=dob,
+                          Stu_edu=detail,
+                          Stu_image=profile_pic,
+                        Stu_document=resume,
+                        Stu_pass=password
+                          )
