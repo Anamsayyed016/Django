@@ -43,7 +43,15 @@ def register(request):
     resume=request.FILES.get('resume')
     print(username,email,detail,phone,dob,subscribe,gender,password,cpassword,resume,profile_pic)
 
-    Student.objects.create(Stu_name=username,
+    
+    user=Student.objects.filter(Stu_email=email)
+    if user:
+        msg="Email exist"
+        return render(request,'registration.html',{'key':msg})
+    
+    else:
+        if password==cpassword:
+            Student.objects.create(Stu_name=username,
                           Stu_email=email,
                           Stu_contact=phone,
                           Stu_dis=subscribe,
@@ -53,3 +61,12 @@ def register(request):
                         Stu_document=resume,
                         Stu_pass=password
                           )
+            msg="regis done"
+            return render(request,'login.html',{'key':msg})
+        else:
+            msg="pass and cpass not match"
+            return render(request,'registration.html',{'key':msg})
+        
+
+            
+    
