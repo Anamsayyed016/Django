@@ -23,6 +23,7 @@ def registration(request):
 def login(request):
     return render(request,'login.html')
 
+
 def register(request):
     print("register page")
     print(request.method)
@@ -58,8 +59,8 @@ def register(request):
                           Stu_dob=dob,
                           Stu_edu=detail,
                           Stu_image=profile_pic,
-                        Stu_document=resume,
-                        Stu_pass=password
+                          Stu_document=resume,
+                          Stu_pass=password
                           )
             msg="regis done"
             return render(request,'login.html',{'key':msg})
@@ -68,5 +69,32 @@ def register(request):
             return render(request,'registration.html',{'key':msg})
         
 
+
+            # {% comment %} login dataaaa {% endcomment %}
+
+def logindata(request):
+    if request.method=='POST':
+        email=request.POST.get('email')
+        passw=request.POST.get('password')
+
+        user=Student.objects.filter(Stu_email=email)
+        if user:
+            userdata=Student.objects.get(Stu_email=email)
+            print(userdata.Stu_name)
+            print(userdata.Stu_email)
+            pass1=userdata.Stu_pass
+
+            if passw==pass1:
+                msg="welcome to dashboard"
+                return render(request,'home.html',{'userdata':userdata})
+
+            else:
+                msg="email & password not exist"
+                return render(request,'login.html',{'msg':msg,'email':email})
             
+        else:
+            msg="email not registered"
+            return render(request,'login.html',{'msg':msg,'email':email})
     
+    else:
+        return render(request,'login.html')

@@ -1,3 +1,15 @@
 {% extends "base.html" %} 
 {% block title %}  login  {% endblock %}
-{% block content %} <h1> this is login content </h1>{% include "base1.html" %}  {% endblock %}
+{% block content %} <h1> this is login content </h1>{% include "base1.html" %} 
+{{msg}}
+    <form action="{%  url 'logindata' %}" method="post">
+        {% csrf_token %}
+        <label for="">Email</label>
+        <input type="text" name="email" value=""> <br> <br>
+        <label for="">Password</label>
+        <input type="password" name="password" value=""><br>
+        <button>Login</button>
+        <!-- <button>Signup</button> -->
+    </form>
+
+ {% endblock %}
