@@ -4,6 +4,7 @@ from.models import Student
 # Create your views here.
 def home(request):
     return render(request,'home.html')
+    # =====================# index============================
 
 def index(request,pk):
     userdata=Student.objects.get(id=pk)
@@ -23,9 +24,12 @@ def index(request,pk):
     }
     return render(request,'home.html',{'userdata':userdata})
 
+    # =====================# about============================
 
 def about(request):
-    userdata=Student.objects.get(id=8)
+    return render(request,'about.html')
+def about1(request,pk):
+    userdata=Student.objects.get(id=pk)
     userdata={
 
                 "id":userdata.id,
@@ -42,11 +46,52 @@ def about(request):
     }
     return render(request,'about.html',{'userdata':userdata})
 
-def services(request):
-    return render(request,'services.html')
+    # =====================# contact ============================
 
 def contact(request):
     return render(request,'contact.html')
+def contact1(request,pk):
+    userdata=Student.objects.get(id=pk)
+    userdata={
+            
+                "id":userdata.id,
+                "name":userdata.Stu_name,
+                "contact":userdata.Stu_contact,
+                "dis":userdata.Stu_dis,
+                "dob":userdata.Stu_dob,
+                "email":userdata.Stu_email,
+                "image":userdata.Stu_image,
+                "file":userdata.Stu_document,
+                "gender":userdata.Stu_gender,
+                "password":userdata.Stu_pass,
+                "education":userdata.Stu_edu,
+    }
+    return render(request,'contact.html',{'userdata':userdata})
+
+
+    # =====================# services ============================
+
+
+def services(request):
+    return render(request,'services.html')
+def services1(request,pk):
+    userdata=Student.objects.get(id=pk)
+    userdata={
+            
+                "id":userdata.id,
+                "name":userdata.Stu_name,
+                "contact":userdata.Stu_contact,
+                "dis":userdata.Stu_dis,
+                "dob":userdata.Stu_dob,
+                "email":userdata.Stu_email,
+                "image":userdata.Stu_image,
+                "file":userdata.Stu_document,
+                "gender":userdata.Stu_gender,
+                "password":userdata.Stu_pass,
+                "education":userdata.Stu_edu,
+    }
+    return render(request,'services.html',{'userdata':userdata})
+
 
 def registration(request):
     return render(request,'registration.html')

@@ -2,9 +2,19 @@
 
 {% block content %} 
 
-Welcome to dashboard
+Welcome to dashboard:-<br>
 
-{{userdata.name}}
+{{userdata.name}} <br>
+{{userdata.contact}} <br>
+{{userdata.dis}} <br>
+{{userdata.dob}}<br>
+{{userdata.email}}<br>
+<!-- {{userdata.file}}<br> -->
+<!-- <source media="{{userdata.file.url}}" srcset="" type="file"   >{} -->
+<a href="{{userdata.file.url}}" download="" >Resume</a>
+<img src="{{userdata.image.url}}" alt="logo" height="50%" width="50%">
+
+
 <hr>
 
  {% endblock %}
