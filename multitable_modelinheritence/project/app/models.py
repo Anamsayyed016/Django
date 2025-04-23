@@ -8,7 +8,7 @@ class Basefield(models.Model):
 
 class Student(Basefield):
     
-    course=models.CharField()
+    course=models.CharField(max_length=50)
     rollno=models.IntegerField()
     fees=models.IntegerField()
     def __str__(self):
@@ -20,7 +20,7 @@ class Employee(Basefield):
     emp_id=models.EmailField(max_length=50)
     salary=models.IntegerField()
 
-class Client(models.Model):
+class Client(Basefield):
     
     project=models.CharField(max_length=50)
-    billing_status=models=None
+    billing_status=models.CharField(max_length=50)
