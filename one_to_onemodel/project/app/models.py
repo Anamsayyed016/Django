@@ -16,7 +16,7 @@ class Student(models.Model):
     stu_name=models.CharField(max_length=20)
     stu_email=models.EmailField()
     stu_contant=models.IntegerField()
-    aadhar_no=models.OneToOneField(Aadhar,on_delete=models.PROTECT,to_field='aadhar') #cascade
+    aadhar_no=models.OneToOneField(Aadhar,on_delete=models.PROTECT,to_field='aadhar',related_name="xyz") #cascade
 
     def __str__(self):
         return self.stu_name + '' + str(self.aadhar_no)
