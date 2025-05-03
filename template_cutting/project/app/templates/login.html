@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% block title %}  login  {% endblock %}
-{% block content %} <h1> this is login content </h1>
+{% block content %}
 {{msg}}
     <form action="{%  url 'logindata' %}" method="post">
         {% csrf_token %}
