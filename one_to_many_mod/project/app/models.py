@@ -7,14 +7,14 @@ class Department(models.Model):
     dep_hod=models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.dep_name)
+        return self.dep_name
     
 
 class Student(models.Model):
     stu_name=models.CharField(max_length=20)
     stu_email=models.EmailField()
     stu_contact=models.IntegerField()
-    stu_dep=models.ForeignKey(Department,on_delete=models.PROTECT,to_field="dep_name",related_name="xyz")
+    stu_dep=models.ForeignKey(Department,on_delete=models.PROTECT,to_field="dep_name",related_name="students")
 
     def __str__(self):
-        return str(self.stu_name+" "+self.stu_email+" "+str)
+        return self.stu_name+" "+self.stu_email+" "+str(self.stu_contact)
