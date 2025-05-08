@@ -12,3 +12,16 @@ def first5(request):
 def last5(request):
     data=Students.objects.all().order_by('-stu_name')[:5]
     return render(request,'table.html',{'data':data})
+
+def allstu(request):
+    data = Students.objects.all
+    return render(request,'table.html',{'data':data})
+
+def assen(request):
+    data = Students.objects.all()[0:11]
+    return render(request,'table.html',{'data':data})
+
+def dssend(request):
+    data = Students.objects.all().order_by('-stu_sno',)[0:11]
+    return render(request,'table.html',{'data':data})
+

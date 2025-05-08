@@ -23,5 +23,8 @@ urlpatterns = [
     path('',views.landing,name="landing"),
     # path('table/',views.table,name="table"),
     path('first5',views.first5,name="first5"),
-    path('last5',views.last5,name="last5")
+    path('last5',views.last5,name="last5"),
+    path('allstu',views.allstu,name="allstu"),
+    path('assen',views.assen,name="assen"),
+    path('dssend',views.dssend,name="dssend"),
 ]
