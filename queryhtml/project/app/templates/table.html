@@ -6,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-        <a href="{% url 'landing' %}">back</a>
+        <!-- <a href="{% url 'landing' %}">back</a> -->
+         <a href="{% url 'landing' %}">first 5 students</a> <br>
+         <a href="{% url 'landing' %}">last 5 students</a> <br>
+         <a href="{% url 'landing' %}">all student</a> <br>
+         <a href="{% url 'landing' %}">all student assecding</a> <br>
+         <a href="{% url 'landing' %}">all student dssecding</a> <br>
+        {% if data  %}
     <table border="5">
             <tr>
                 <th>S.no</th>
@@ -25,7 +31,10 @@
                     <td>{{i.stu_city}}</td>
                 </tr>
                 {% endfor %}
+                
     </table>
-
+    {% else %}
+    <p>No data available.</p>
+    {% endif %}
 </body>
 </html>
