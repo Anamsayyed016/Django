@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %}Register{% endblock %}
+{% load static %}
+
+{% block content %}   
+<h1>This is the Register Page</h1>
+
+<div class="regis-register">
+    <form action="{% url 'registerdetail' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="cook_image">Profile Picture:</label> 
+        <input type="file" name="cook_image" accept=".jpeg,.png,.jpg" required> <br><br> 
+
+        <label for="cook_name">Full Name:</label>
+        <input type="text" name="cook_name" required> <br><br> 
+
+        <label for="cook_email">Email:</label>
+        <input type="email" name="cook_email" required> <br><br> 
+
+        <label for="cook_contact">Mobile Number:</label>
+        <input type="tel" name="cook_contact" pattern="[0-9]{10}" maxlength="10" required> <br><br> 
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" > <br><br> 
+
+        <label for="cpassword ">Confirm Password:</label>
+        <input type="password" name="cpassword" > <br><br> 
+
+         <label for="cook_foods">Foods (e.g., Biryani, Pasta):</label>
+        <input type="text" name="cook_foods" required> <br><br>
+
+        <label for="cook_recipes">Recipes (e.g., Hyderabadi, Italian):</label>
+        <input type="text" name="cook_recipes" required> <br><br> 
+
+        <input type="submit" value="Submit">
+    </form>
+</div>       
+{% endblock %}
