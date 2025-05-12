@@ -112,24 +112,26 @@ def logiinfo(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+        print(password)
 
         user = Cooking.objects.get(cook_email=email)
         if user:
             userdata = Cooking.objects.get(cook_email=email)
-            print(userdata.cook_email)
-            print(userdata.cook_pass)
+            # print(userdata.cook_email)
+            # print(userdata.cook_pass)
             passw = userdata.cook_pass
+            print(passw)
 
             if passw == password:
                 message = "Welcome"
                 userdetails = {
                     "id":userdata.id,
                     "name":userdata.cook_name,
-                     "image":userdata.cook_image,
-                     "email":userdata.cook_email,
-                        "contact":userdata.cook_contact,
-                         "foods":userdata.cook_foods,
-                         "recipes":userdata.cook_recipes,
+                    "image":userdata.cook_image,
+                    "email":userdata.cook_email,
+                    "contact":userdata.cook_contact,
+                        "foods":userdata.cook_foods,
+                        "recipes":userdata.cook_recipes,
                 }
                 return render(request, 'dashboard.html', {'userdata': userdetails})
             else:
@@ -140,3 +142,45 @@ def logiinfo(request):
             return render(request, 'login.html', {'message': message, 'email': email})
     else:
         return render(request, 'login.html')
+
+
+
+
+
+# -------------------dashboard
+def first5(request):
+    data=Cooking.objects.all()[0:6]
+    return render(request,'dashboard.html',{'data':data})
+
+def last5(request):
+    data=Cooking.objects.all().order_by('-id')[:6]
+    return render(request,'dashboard.html',{'data':data})
+
+def allstu(request):
+    data = Cooking.objects.all
+    return render(request,'dashboard.html',{'data':data})
+
+def assen(request):
+    data = Cooking.objects.all()[0:11]
+    return render(request,'dashboard.html',{'data':data})
+
+def dssend(request):
+    data = Cooking.objects.all().order_by('-id',)[0:11]
+    return render(request,'dashboard.html',{'data':data})
+
+
+# edit
+def edit(request,pk1,pk2):
+    print(pk1)
+    print(pk2)
+
+    userdata=Cooking.model.objects.get(id=pk1)
+    userdata={
+        
+
+    }
+    return render(request,'dashboard.html',{'userdata':userdata})
+
+# delte
+def delete(request,pk):
+    pass

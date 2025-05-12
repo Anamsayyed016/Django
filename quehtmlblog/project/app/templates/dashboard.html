@@ -1,6 +1,81 @@
 {% extends "index.html" %} 
-{% block title %}   Dashboard {% endblock  %}
+{% block title %}Dashboard{% endblock %}
+{% load static %} 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+{% endblock %}
 
 {% block content %} 
-    <h1>this is Dashboard</h1>
-{% endblock  %}
+    <div class="dash-dashboard">
+
+        <div class="nav-links">
+            <a href="{% url 'first5' %}">First 5 Details</a>
+            <a href="{% url 'last5' %}">Last 5 Details</a>
+            <a href="{% url 'allstu' %}">All Details</a>
+            <a href="{% url 'assen' %}">All Details Ascending</a>
+            <a href="{% url 'dssend' %}">All Details Descending</a>
+        </div>
+
+        <!-- <h1>This is Dashboard</h1> -->
+
+        <!-- Search Form -->
+        <form method="GET" action="#" class="search-form">
+            <input type="text" name="query" placeholder="Search by name or email..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if userdata %}
+            <div class="user-details">
+                <h2>Welcome, {{ userdata.name }}!</h2>
+                <p>Email: {{ userdata.email }}</p>
+                <p>Contact: {{ userdata.contact }}</p>
+                <p>Favorite Foods: {{ userdata.foods }}</p>
+                <p>Recipes: {{ userdata.recipes }}</p>
+            </div>
+        
+
+        {% else data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Foods</th>
+                    <th>Recipes</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.cook_name}}</td>
+                    <td>{{i.cook_email}}</td>
+                    <td>{{i.cook_contact}}</td>
+                    <td>{{i.cook_foods}}</td>
+                    <td>{{i.cook_recipes}}</td>
+                    <td><a href="{% url 'edit' pk1=userdata.id pk2=i.id %}">Edit</a> </td>
+                    <td><a href="{% url 'delete' %}">Delete</a> </td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif message %}
+        <!-- <div class="message">{{ message }}</div> -->
+        
+
+                    <!-- edit -->
+
+                    {% if edit_data %}
+                    <!-- <form action="{%  'edit_data' pk=userdata.id  %} method='POST'  ">
+
+
+                    </form> -->
+    </div>
+    {% endif %}
+{% endblock %}

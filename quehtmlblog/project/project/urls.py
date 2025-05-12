@@ -38,10 +38,19 @@ urlpatterns = [
     path('registerdetail/',views.registerdetail,name='registerdetail'),
 
     path('login/',views.login,name='login'),
-    path('logiinfo/',views.logiinfo,name='logiinfo')
+    path('logiinfo/',views.logiinfo,name='logiinfo'),
 
+# -------------dashboard
+    path('first5',views.first5,name="first5"),
+     path('last5',views.last5,name="last5"),
+    path('allstu',views.allstu,name="allstu"),
+    path('assen',views.assen,name="assen"),
+    path('dssend',views.dssend,name="dssend"),
 
+# editdelete
 
+path('edit/<int:pk>',views.edit,name='edit'),
+path('delete/<int:pk>',views.edit,name='delete'),
 
 
 
